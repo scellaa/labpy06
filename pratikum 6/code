@@ -1,1 +1,113 @@
+data_mahasiswa_UPB = {}
 
+def lihat_data():
+    print("Program Data Mahasiswa UPB")
+    print("=" * 69)
+    print(f"| {'NO':^2} | {'NAMA':^12} | {'NIM':^10} | {'TUGAS':^5} | {'UTS':^4} | {'UAS':^4} | {'AKHIR':^10} |")
+    print("=" * 69)
+
+    if not data_mahasiswa_UPB:
+        print("|                       TIDAK ADA DATA                              |")
+        print("="*69)
+        return
+
+    for i,(nama, mhs) in enumerate(data_mahasiswa_UPB.items(), start=1):
+        print(f"| {i:>2} | {nama:^12} | {mhs['nim']:^10} | {mhs['tugas']:^5} | {mhs['uts']:^3} | {mhs['uas']:^3} | {mhs['akhir']:^10.1f} |")
+    print("="*69)
+
+
+def tambah_data():
+    print("\nTambah Data Mahasiswa")
+    nama = input("Nama : ")
+
+    if nama in data_mahasiswa_UPB:
+        print("Nama mahasiswa sudah terdaftar!")
+        return
+
+    nim = input("NIM : ")
+    tugas = float(input("Nilai Tugas : "))
+    uts = float(input("Nilai UTS     : "))
+    uas = float(input("Nilai UAS     : "))
+    akhir = (tugas*0.3) + (uts*0.35) + (uas*0.35)
+
+    data_mahasiswa_UPB[nama] = {
+        "nim"  : nim,
+        "tugas": tugas,
+        "uts"  : uts,
+        "uas"  : uas,
+        "akhir": akhir
+    }
+    print("Data berhasil ditambah!")
+
+def ubah_data():
+    nama = input("\nMasukkan nama yang akan diubah: ")
+    if nama not in data_mahasiswa_UPB:
+        print("Data invalid!")
+        return
+
+    print("Data ditemukan. Masukkan data baru:")
+    nama_baru = input("Nama baru : ")
+    nim = input("nim baru : ")
+    tugas = float(input("Nilai Tugas baru : "))
+    uts = float(input("Nilai UTS baru   : "))
+    uas = float(input("Nilai UAS baru   : "))
+
+    akhir = (tugas*0.3) + (uts*0.35) + (uas*0.35)
+
+    # hapus data lama
+    del data_mahasiswa_UPB[nama]
+
+    # buat data baru
+    data_mahasiswa_UPB[nama_baru] = {
+        "nim": nim,
+        "tugas": tugas,
+        "uts": uts,
+        "uas": uas,
+        "akhir": akhir
+    }
+
+    print("Data berhasil diubah!")
+def hapus_data():
+    nama = input("\nMasukkan Nama yang akan dihapus: ")
+    if nama in data_mahasiswa_UPB:
+        del data_mahasiswa_UPB[nama]
+        print("Data berhasil dihapus!")
+    else:
+        print("Data invalid!!")
+
+def cari_data():
+    nama = input("\nMasukkan Nama yang dicari: ")
+
+    if nama not in data_mahasiswa_UPB:
+        print("Data invalid!!")
+        return
+
+    m = data_mahasiswa_UPB[nama]
+    print("\nData ditemukan:")
+    print(f"Nama  : {nama}")
+    print(f"Nim   : {m['nim']}")
+    print(f"Tugas : {m['tugas']}")
+    print(f"UTS   : {m['uts']}")
+    print(f"UAS   : {m['uas']}")
+    print(f"Akhir : {m['akhir']:.1f}")
+
+while True:
+    print("\nProgram Input Nilai")
+    print("====================")
+    pilihan = input("[(L)ihat, (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar]: ").lower()
+
+    if pilihan == "l":
+        lihat_data()
+    elif pilihan == "t":
+        tambah_data()
+    elif pilihan == "u":
+        ubah_data()
+    elif pilihan == "h":
+        hapus_data()
+    elif pilihan == "c":
+        cari_data()
+    elif pilihan == "k":
+        print("Program selesai, terimakasih sudah berpartisipasi ^.^.")
+        break
+    else:
+        print("Pilihan tidak valid!")
