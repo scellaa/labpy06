@@ -4,7 +4,7 @@
 ### NAMA: MAYSCELA HERLIYAWATI <br
 ### KELAS: TI.25.C5
 ### NIM: 312510371
-#---------------------------------------------------------------------------------------------------
+_________________________________________________________________________________________________________________________________________________________
 
 Output code 
 
@@ -17,5 +17,6 @@ Output code
 <img width="865" height="366" alt="Screenshot 2025-11-30 115811" src="https://github.com/user-attachments/assets/23e8a7c0-430b-4154-a516-11bac5950a50" /> 
 
 <img width="933" height="557" alt="Screenshot 2025-11-30 115836" src="https://github.com/user-attachments/assets/e4339bd7-048b-4645-89a3-155990b6ef89" />
+
 
 
